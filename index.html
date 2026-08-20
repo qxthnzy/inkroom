@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INKROOM — тату-студия в Санкт-Петербурге</title>
+<meta name="description" content="INKROOM — студия татуировки. Blackwork, fine line, traditional, realism, geometric. Портфолио мастеров, честные цены, бесплатная консультация и эскиз.">
+<meta name="theme-color" content="#0b0b0c">
+<link rel="icon" href="images/logo.png" type="image/png">
+<meta property="og:title" content="INKROOM — тату-студия">
+<meta property="og:description" content="Авторские татуировки. Портфолио мастеров и запись на консультацию.">
+<meta property="og:image" content="images/hero.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<a class="skip-link" href="#hero">К основному содержимому</a>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="header">
+  <div class="header__inner">
+    <a class="logo" href="#hero" aria-label="INKROOM — на главную">
+      <img src="images/logo.png" alt="" class="logo__mark" width="34" height="34">
+      <span class="logo__text">INK<em>ROOM</em></span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Основная навигация">
+      <ul class="nav__list">
+        <li><a href="#about">Студия</a></li>
+        <li><a href="#masters">Мастера</a></li>
+        <li><a href="#portfolio">Портфолио</a></li>
+        <li><a href="#styles">Стили</a></li>
+        <li><a href="#process">Процесс</a></li>
+        <li><a href="#prices">Цены</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+      <a class="btn btn--ghost nav__cta" href="#consult">Записаться</a>
+    </nav>
+
+    <a class="btn btn--solid header__cta" href="#consult">Консультация</a>
+
+    <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero__media">
+    <img src="images/hero.jpg" alt="Крупная татуировка на спине, работа мастера INKROOM" fetchpriority="high">
+  </div>
+
+  <div class="hero__content container">
+    <p class="eyebrow reveal">Санкт-Петербург · с 2014 года</p>
+
+    <h1 class="hero__title">
+      <span class="line reveal">Татуировка</span>
+      <span class="line reveal delay-1">как <em>личный</em></span>
+      <span class="line reveal delay-2">манифест</span>
+    </h1>
+
+    <div class="hero__bottom">
+      <p class="hero__lead reveal delay-3">
+        Пять мастеров, одна одержимость деталью. Мы не копируем чужие эскизы —
+        мы рисуем твою историю под твою анатомию.
+      </p>
+      <div class="hero__actions reveal delay-4">
+        <a class="btn btn--solid btn--lg" href="#consult">Бесплатная консультация</a>
+        <a class="btn btn--line btn--lg" href="#portfolio">Смотреть работы</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__stats">
+    <div class="stat"><span class="stat__num" data-count="4200">0</span><span class="stat__label">работ сделано</span></div>
+    <div class="stat"><span class="stat__num" data-count="11">0</span><span class="stat__label">лет студии</span></div>
+    <div class="stat"><span class="stat__num" data-count="5">0</span><span class="stat__label">мастеров</span></div>
+    <div class="stat"><span class="stat__num" data-count="98" data-suffix="%">0</span><span class="stat__label">заживают без правок</span></div>
+  </div>
+
+  <a class="hero__scroll" href="#about" aria-label="Листать вниз"><span></span>scroll</a>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <span>Blackwork</span><i>✳</i><span>Fine Line</span><i>✳</i><span>Traditional</span><i>✳</i>
+    <span>Realism</span><i>✳</i><span>Geometric</span><i>✳</i>
+    <span>Blackwork</span><i>✳</i><span>Fine Line</span><i>✳</i><span>Traditional</span><i>✳</i>
+    <span>Realism</span><i>✳</i><span>Geometric</span><i>✳</i>
+  </div>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="section about" id="about">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">01</span>
+      <h2 class="sec-title">О <em>студии</em></h2>
+    </header>
+
+    <div class="about__grid">
+      <div class="about__text reveal">
+        <p class="lead">
+          INKROOM — это 120 м² тишины, света и стерильности в центре Петербурга.
+          Никаких очередей, музыки на весь зал и чужих взглядов: у каждого мастера
+          отдельный кабинет.
+        </p>
+        <p>
+          Мы начинали в 2014-м втроём, в комнате на Петроградской. Сегодня к нам
+          прилетают из Москвы, Хельсинки и Тбилиси — за авторским эскизом, который
+          нельзя повторить. Мы работаем только с оригинальными идеями: если хочется
+          точную копию чужой работы, честно скажем «нет» и предложим свою версию.
+        </p>
+        <ul class="about__list">
+          <li><strong>Стерильность.</strong> Одноразовые модули, автоклав класса B, журнал контроля.</li>
+          <li><strong>Пигменты.</strong> Eternal, World Famous, Radiant — сертификаты по запросу.</li>
+          <li><strong>Гарантия.</strong> Бесплатная коррекция в течение 3 месяцев после сеанса.</li>
+        </ul>
+      </div>
+
+      <div class="about__media">
+        <figure class="about__fig about__fig--1 reveal">
+          <img src="images/studio1.jpg" alt="Рабочий столик мастера со стерильными инструментами" loading="lazy">
+        </figure>
+        <figure class="about__fig about__fig--2 reveal delay-2">
+          <img src="images/studio2.jpg" alt="Мастер набивает татуировку на предплечье" loading="lazy">
+          <figcaption>Кабинет №2 · сеанс в работе</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MASTERS ============ -->
+<section class="section masters" id="masters">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">02</span>
+      <h2 class="sec-title">Мастера</h2>
+      <p class="sec-note">Каждый ведёт свой стиль и свою очередь. Выбирай по работам, а не по прайсу.</p>
+    </header>
+
+    <div class="masters__grid">
+      <article class="master reveal">
+        <div class="master__photo">
+          <img src="images/photo1.jpg" alt="Ева Корн, мастер студии INKROOM" loading="lazy">
+          <span class="master__initials" aria-hidden="true">ЕК</span>
+        </div>
+        <div class="master__body">
+          <h3 class="master__name">Ева Корн</h3>
+          <p class="master__role">Blackwork · Geometric</p>
+          <p class="master__bio">9 лет в индустрии. Крупные орнаментальные рукава и графика по анатомии. Любит чёрное плотное закрытие.</p>
+          <ul class="master__meta">
+            <li><span>Опыт</span> 9 лет</li>
+            <li><span>Запись</span> 3 недели</li>
+            <li><span>От</span> 9 000 ₽</li>
+          </ul>
+          <a class="link-arrow" href="#consult" data-master="Ева Корн">Записаться к Еве</a>
+        </div>
+      </article>
+
+      <article class="master reveal delay-1">
+        <div class="master__photo">
+          <img src="images/photo2.jpg" alt="Артём Лис, мастер студии INKROOM" loading="lazy">
+          <span class="master__initials" aria-hidden="true">АЛ</span>
+        </div>
+        <div class="master__body">
+          <h3 class="master__name">Артём Лис</h3>
+          <p class="master__role">Realism · Black &amp; Grey</p>
+          <p class="master__bio">Портреты и фактуры: кожа, металл, шерсть. Работает длинными сеансами по 6 часов, любит крупные форматы.</p>
+          <ul class="master__meta">
+            <li><span>Опыт</span> 12 лет</li>
+            <li><span>Запись</span> 6 недель</li>
+            <li><span>От</span> 12 000 ₽</li>
+          </ul>
+          <a class="link-arrow" href="#consult" data-master="Артём Лис">Записаться к Артёму</a>
+        </div>
+      </article>
+
+      <article class="master reveal delay-2">
+        <div class="master__photo">
+          <img src="images/master3.jpg" alt="Ника Соул за работой с клиентом" loading="lazy">
+          <span class="master__initials" aria-hidden="true">НС</span>
+        </div>
+        <div class="master__body">
+          <h3 class="master__name">Ника Соул</h3>
+          <p class="master__role">Fine Line · Микро</p>
+          <p class="master__bio">Тонкая линия, ботаника, минималистичные надписи. Первая татуировка? Скорее всего, вам к Нике.</p>
+          <ul class="master__meta">
+            <li><span>Опыт</span> 6 лет</li>
+            <li><span>Запись</span> 2 недели</li>
+            <li><span>От</span> 6 000 ₽</li>
+          </ul>
+          <a class="link-arrow" href="#consult" data-master="Ника Соул">Записаться к Нике</a>
+        </div>
+      </article>
+
+      <article class="master reveal delay-3">
+        <div class="master__photo">
+          <img src="images/master4.jpg" alt="Марк Гуров во время сеанса" loading="lazy">
+          <span class="master__initials" aria-hidden="true">МГ</span>
+        </div>
+        <div class="master__body">
+          <h3 class="master__name">Марк Гуров</h3>
+          <p class="master__role">Traditional · Neo-traditional</p>
+          <p class="master__bio">Плотный контур, чистый цвет, классические сюжеты в современном прочтении. Резидент конвенций.</p>
+          <ul class="master__meta">
+            <li><span>Опыт</span> 10 лет</li>
+            <li><span>Запись</span> 4 недели</li>
+            <li><span>От</span> 8 500 ₽</li>
+          </ul>
+          <a class="link-arrow" href="#consult" data-master="Марк Гуров">Записаться к Марку</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORTFOLIO ============ -->
+<section class="section portfolio" id="portfolio">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">03</span>
+      <h2 class="sec-title">Порт<em>фолио</em></h2>
+      <p class="sec-note">Больше 4 000 работ за 11 лет. Здесь — то, чем гордимся особенно.</p>
+    </header>
+
+    <div class="filters" role="tablist" aria-label="Фильтр работ по стилю">
+      <button class="filter is-active" role="tab" aria-selected="true" data-filter="all">Все</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="blackwork">Blackwork</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="fine-line">Fine Line</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="traditional">Traditional</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="realism">Realism</button>
+      <button class="filter" role="tab" aria-selected="false" data-filter="geometric">Geometric</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <figure class="work work--tall" data-style="blackwork">
+        <img src="images/work-blackwork-1.jpg" alt="Орнаментальный блэкворк на всю спину" loading="lazy">
+        <figcaption><span class="work__title">Орнамент на всю спину</span><span class="work__meta">Blackwork · Ева Корн · 4 сеанса</span></figcaption>
+      </figure>
+      <figure class="work" data-style="fine-line">
+        <img src="images/work-fineline-1.jpg" alt="Тонкая веточка и надпись на предплечье" loading="lazy">
+        <figcaption><span class="work__title">Веточка и надпись</span><span class="work__meta">Fine Line · Ника Соул · 2 часа</span></figcaption>
+      </figure>
+      <figure class="work" data-style="realism">
+        <img src="images/work-realism-1.jpg" alt="Реалистичный рукав с тигром" loading="lazy">
+        <figcaption><span class="work__title">Тигр в рукаве</span><span class="work__meta">Realism · Артём Лис · 3 сеанса</span></figcaption>
+      </figure>
+      <figure class="work" data-style="geometric">
+        <img src="images/work-geometric-1.jpg" alt="Геометрическая стрела на предплечье" loading="lazy">
+        <figcaption><span class="work__title">Стрела на предплечье</span><span class="work__meta">Geometric · Ева Корн · 3 часа</span></figcaption>
+      </figure>
+      <figure class="work work--wide" data-style="traditional">
+        <img src="images/work-traditional-1.jpg" alt="Цветные традиционные татуировки на бедре" loading="lazy">
+        <figcaption><span class="work__title">Классика на бедре</span><span class="work__meta">Traditional · Марк Гуров · 2 сеанса</span></figcaption>
+      </figure>
+      <figure class="work" data-style="blackwork">
+        <img src="images/work-blackwork-2.jpg" alt="Графичный чёрный рукав, переходящий на спину" loading="lazy">
+        <figcaption><span class="work__title">Графика по плечу и спине</span><span class="work__meta">Blackwork · Ева Корн · 6 часов</span></figcaption>
+      </figure>
+      <figure class="work" data-style="fine-line">
+        <img src="images/work-fineline-2.jpg" alt="Рукописная надпись на предплечье" loading="lazy">
+        <figcaption><span class="work__title">Рукописная надпись</span><span class="work__meta">Fine Line · Ника Соул · 1,5 часа</span></figcaption>
+      </figure>
+      <figure class="work work--tall" data-style="geometric">
+        <img src="images/work-geometric-2.jpg" alt="Мандала между лопаток" loading="lazy">
+        <figcaption><span class="work__title">Мандала между лопаток</span><span class="work__meta">Geometric · Ева Корн · 2 сеанса</span></figcaption>
+      </figure>
+      <figure class="work" data-style="realism">
+        <img src="images/work-realism-2.jpg" alt="Ботанический рукав в чёрно-серой технике" loading="lazy">
+        <figcaption><span class="work__title">Ботанический рукав, black &amp; grey</span><span class="work__meta">Realism · Артём Лис · 4 сеанса</span></figcaption>
+      </figure>
+      <figure class="work" data-style="traditional">
+        <img src="images/work-traditional-2.jpg" alt="Олдскул на плече и тонкие линии на кисти" loading="lazy">
+        <figcaption><span class="work__title">Олдскул на плече</span><span class="work__meta">Traditional · Марк Гуров · 5 часов</span></figcaption>
+      </figure>
+      <figure class="work" data-style="blackwork">
+        <img src="images/work-blackwork-3.jpg" alt="Крупный леттеринг на спине" loading="lazy">
+        <figcaption><span class="work__title">Леттеринг на спине</span><span class="work__meta">Blackwork · Ева Корн · 3 часа</span></figcaption>
+      </figure>
+      <figure class="work" data-style="geometric">
+        <img src="images/work-geometric-3.jpg" alt="Геометрический кристалл на предплечье" loading="lazy">
+        <figcaption><span class="work__title">Кристалл, дотворк</span><span class="work__meta">Geometric · Ева Корн · 4 часа</span></figcaption>
+      </figure>
+    </div>
+
+    <p class="gallery__empty" id="galleryEmpty" hidden>В этом стиле пока нечего показать — напишите нам, покажем в переписке.</p>
+
+    <div class="portfolio__cta">
+      <p>Понравился почерк мастера? Забронируйте слот — календарь заполняется на месяц вперёд.</p>
+      <a class="btn btn--solid" href="#consult">Хочу такую же идею</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STYLES ============ -->
+<section class="section styles" id="styles">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">04</span>
+      <h2 class="sec-title">Стили <em>татуировок</em></h2>
+      <p class="sec-note">Не знаете, чего хотите? Начните отсюда — коротко о том, как живёт каждый стиль на коже.</p>
+    </header>
+
+    <div class="styles__list">
+      <article class="style-row reveal">
+        <span class="style-row__num">/01</span>
+        <h3 class="style-row__name">Blackwork</h3>
+        <p class="style-row__desc">Плотный чёрный, орнаменты, абстракция и cover-up. Читается на любой дистанции и почти не выцветает.</p>
+        <span class="style-row__tag">от 9 000 ₽</span>
+        <div class="style-row__img"><img src="images/style-blackwork.jpg" alt="Пример работы в стиле blackwork" loading="lazy"></div>
+      </article>
+
+      <article class="style-row reveal">
+        <span class="style-row__num">/02</span>
+        <h3 class="style-row__name">Fine Line</h3>
+        <p class="style-row__desc">Тонкая линия одной иглой: ботаника, надписи, микро-сюжеты. Деликатно, но требует ухода и коррекции.</p>
+        <span class="style-row__tag">от 6 000 ₽</span>
+        <div class="style-row__img"><img src="images/style-fine-line.jpg" alt="Пример работы в стиле fine line" loading="lazy"></div>
+      </article>
+
+      <article class="style-row reveal">
+        <span class="style-row__num">/03</span>
+        <h3 class="style-row__name">Traditional</h3>
+        <p class="style-row__desc">Жирный контур, ограниченная палитра, вечные сюжеты. Стиль, который будет выглядеть хорошо и через 20 лет.</p>
+        <span class="style-row__tag">от 8 500 ₽</span>
+        <div class="style-row__img"><img src="images/style-traditional.jpg" alt="Пример работы в стиле traditional" loading="lazy"></div>
+      </article>
+
+      <article class="style-row reveal">
+        <span class="style-row__num">/04</span>
+        <h3 class="style-row__name">Realism</h3>
+        <p class="style-row__desc">Портреты, животные, фактуры в чёрно-сером. Долгие сеансы и максимум внимания к свету и тени.</p>
+        <span class="style-row__tag">от 12 000 ₽</span>
+        <div class="style-row__img"><img src="images/style-realism.jpg" alt="Пример работы в стиле realism" loading="lazy"></div>
+      </article>
+
+      <article class="style-row reveal">
+        <span class="style-row__num">/05</span>
+        <h3 class="style-row__name">Geometric</h3>
+        <p class="style-row__desc">Симметрия, точная разметка по анатомии, дотворк и линии. Идеально ложится на предплечья и спину.</p>
+        <span class="style-row__tag">от 9 500 ₽</span>
+        <div class="style-row__img"><img src="images/style-geometric.jpg" alt="Пример работы в стиле geometric" loading="lazy"></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="section process" id="process">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">05</span>
+      <h2 class="sec-title">Как мы <em>работаем</em></h2>
+      <p class="sec-note">От первого сообщения до зажившей татуировки — пять понятных шагов.</p>
+    </header>
+
+    <ol class="steps">
+      <li class="step reveal">
+        <span class="step__num">01</span>
+        <h3 class="step__title">Заявка и консультация</h3>
+        <p>Отвечаем в течение часа. Обсуждаем идею, размер, место и бюджет — онлайн или в студии, бесплатно.</p>
+      </li>
+      <li class="step reveal delay-1">
+        <span class="step__num">02</span>
+        <h3 class="step__title">Эскиз</h3>
+        <p>Мастер рисует авторский эскиз под вашу анатомию. Две правки включены, эскиз не показываем другим клиентам.</p>
+      </li>
+      <li class="step reveal delay-2">
+        <span class="step__num">03</span>
+        <h3 class="step__title">Бронь даты</h3>
+        <p>Фиксируем дату предоплатой 30% — она идёт в стоимость сеанса и подтверждает, что слот ваш.</p>
+      </li>
+      <li class="step reveal delay-3">
+        <span class="step__num">04</span>
+        <h3 class="step__title">Сеанс</h3>
+        <p>Стерильный кабинет, перерывы каждый час, ваша музыка. Средний сеанс — 4 часа, максимум 7.</p>
+      </li>
+      <li class="step reveal delay-4">
+        <span class="step__num">05</span>
+        <h3 class="step__title">Заживление и коррекция</h3>
+        <p>Плёнка, памятка и чат с мастером на 30 дней. Через 4–8 недель — бесплатная коррекция, если нужна.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ PREPARATION ============ -->
+<section class="section prep" id="prep">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">06</span>
+      <h2 class="sec-title">Подготовка <em>к сеансу</em></h2>
+      <p class="sec-note">Правила простые, но именно они решают, как пройдёт день и как заживёт работа.</p>
+    </header>
+
+    <div class="prep__cols">
+      <div class="prep__col prep__col--do reveal">
+        <h3><span aria-hidden="true">+</span> Нужно</h3>
+        <ul>
+          <li>Выспаться: 7–8 часов сна заметно повышают болевой порог.</li>
+          <li>Плотно поесть за 1,5–2 часа до сеанса и взять с собой воду и сладкое.</li>
+          <li>Надеть свободную одежду, к которой не жалко прикоснуться краской.</li>
+          <li>Взять наушники, книгу или сериал — сеанс длится несколько часов.</li>
+          <li>Предупредить мастера об аллергии, хронических болезнях и лекарствах.</li>
+        </ul>
+      </div>
+      <div class="prep__col prep__col--dont reveal delay-2">
+        <h3><span aria-hidden="true">−</span> Нельзя</h3>
+        <ul>
+          <li>Алкоголь и энергетики за 24 часа — кровь разжижается, пигмент хуже ложится.</li>
+          <li>Аспирин и другие разжижающие препараты без согласования с врачом.</li>
+          <li>Загар и агрессивные пилинги на зоне татуировки за 2 недели.</li>
+          <li>Приходить на голодный желудок или сразу после тренировки.</li>
+          <li>Планировать бассейн, сауну и спорт на 2–3 недели после сеанса.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="prep__note reveal">
+      Отдельно про уход: первые 3–5 дней — заживляющая плёнка, затем крем 2 раза в день.
+      Полную памятку мастер отправит в чат после сеанса.
+    </p>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="section reviews" id="reviews">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">07</span>
+      <h2 class="sec-title">Отзывы</h2>
+      <p class="sec-note">4,9 из 5 по 380 отзывам на Яндекс.Картах и 2GIS.</p>
+    </header>
+
+    <div class="reviews__viewport">
+      <div class="reviews__track" id="reviewsTrack">
+        <blockquote class="review">
+          <p>Пришла с расплывчатой идеей «что-то про море», ушла с рукавом, который люблю до сих пор. Ева переделала эскиз трижды и ни разу не вздохнула.</p>
+          <footer><span class="review__name">Алина, 27</span><span class="review__meta">Blackwork · рукав</span></footer>
+        </blockquote>
+        <blockquote class="review">
+          <p>Сидел 6 часов и не заметил как. Артём объясняет каждый шаг, делает перерывы и не давит на «давай ещё немного». Реализм огонь, зажило идеально.</p>
+          <footer><span class="review__name">Дмитрий, 33</span><span class="review__meta">Realism · предплечье</span></footer>
+        </blockquote>
+        <blockquote class="review">
+          <p>Первая тату в 19 лет, боялась до дрожи. Ника всё показала, дала подержать машинку и объяснила про уход. Через час я уже смеялась.</p>
+          <footer><span class="review__name">Соня, 19</span><span class="review__meta">Fine Line · ключица</span></footer>
+        </blockquote>
+        <blockquote class="review">
+          <p>Ценник честный: сказали сумму на консультации — столько и заплатил, без «ой, ушло больше краски». Плюс бесплатная коррекция через месяц.</p>
+          <footer><span class="review__name">Кирилл, 30</span><span class="review__meta">Traditional · плечо</span></footer>
+        </blockquote>
+        <blockquote class="review">
+          <p>Студия стерильная до занудства: всё вскрывают при тебе, перчатки меняют по десять раз. После больничного опыта это очень успокаивает.</p>
+          <footer><span class="review__name">Марина, 35</span><span class="review__meta">Geometric · спина</span></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="reviews__controls">
+      <button class="rbtn" id="revPrev" aria-label="Предыдущий отзыв">←</button>
+      <div class="reviews__dots" id="revDots"></div>
+      <button class="rbtn" id="revNext" aria-label="Следующий отзыв">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICES ============ -->
+<section class="section prices" id="prices">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">08</span>
+      <h2 class="sec-title">Цены</h2>
+      <p class="sec-note">Финальную стоимость называем на консультации после эскиза. Никаких доплат «по ходу».</p>
+    </header>
+
+    <div class="price-grid">
+      <article class="price reveal">
+        <h3 class="price__name">Мини</h3>
+        <p class="price__size">до 5 см · 1–2 часа</p>
+        <p class="price__val">6 000 <span>₽</span></p>
+        <ul>
+          <li>Fine line, надписи, микро-символы</li>
+          <li>Эскиз включён</li>
+          <li>Один сеанс</li>
+        </ul>
+        <a class="btn btn--line" href="#consult" data-plan="Мини">Выбрать</a>
+      </article>
+
+      <article class="price price--accent reveal delay-1">
+        <span class="price__badge">Чаще всего берут</span>
+        <h3 class="price__name">Средняя</h3>
+        <p class="price__size">10–20 см · 3–5 часов</p>
+        <p class="price__val">18 000 <span>₽</span></p>
+        <ul>
+          <li>Любой стиль студии</li>
+          <li>Авторский эскиз + 2 правки</li>
+          <li>Бесплатная коррекция</li>
+        </ul>
+        <a class="btn btn--solid" href="#consult" data-plan="Средняя">Выбрать</a>
+      </article>
+
+      <article class="price reveal delay-2">
+        <h3 class="price__name">Крупная форма</h3>
+        <p class="price__size">рукав, спина, бедро</p>
+        <p class="price__val">от 60 000 <span>₽</span></p>
+        <ul>
+          <li>Проект на 3–8 сеансов</li>
+          <li>Индивидуальный план и график</li>
+          <li>Фиксированная цена проекта</li>
+        </ul>
+        <a class="btn btn--line" href="#consult" data-plan="Крупная форма">Обсудить проект</a>
+      </article>
+    </div>
+
+    <ul class="price-notes">
+      <li><strong>Час работы мастера</strong> — 5 000–7 000 ₽ в зависимости от стиля и опыта.</li>
+      <li><strong>Cover-up и перекрытие</strong> — оценка индивидуальная, нужен живой осмотр.</li>
+      <li><strong>Предоплата</strong> 30% брони входит в стоимость и возвращается при отмене за 3 дня.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">09</span>
+      <h2 class="sec-title">Частые <em>вопросы</em></h2>
+    </header>
+
+    <div class="accordion" id="accordion">
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Это очень больно?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>Терпимо. Ощущение похоже на царапанье кошки или лёгкий ожог. Больнее всего рёбра, внутренняя сторона плеча, шея и стопы; спокойнее всего — предплечье, бедро, икра. Мы делаем перерывы каждый час и никуда не спешим.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>С какого возраста вы делаете татуировки?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>С 18 лет по паспорту, без исключений и без «пришёл с родителями». Это позиция студии и требование закона.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Сколько заживает татуировка?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>Поверхностно — 7–10 дней, полностью кожа восстанавливается за 4–6 недель. В первую неделю носите плёнку, дальше увлажняющий крем 2 раза в день и никакого солнца, бассейна и сауны.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Можно прийти со своим эскизом?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>Да, если это ваша идея или работа вашего иллюстратора. Точные копии чужих татуировок мы не делаем — но с радостью нарисуем авторскую версию в том же настроении.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Делаете ли вы перекрытие старых татуировок?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>Да, cover-up — сильная сторона Евы и Марка. Пришлите фото при хорошем свете: иногда достаточно одного сеанса, иногда нужна пара сеансов лазера перед работой. Честно скажем, что реально получится.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Что если мне не понравится эскиз?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>Две правки входят в стоимость. Если после них идея всё ещё не совпала — возвращаем предоплату полностью и расстаёмся друзьями. Татуировка навсегда, компромиссы тут лишние.</p>
+        </div></div>
+      </div>
+      <div class="acc">
+        <button class="acc__head" aria-expanded="false">
+          <span>Можно ли делать татуировку летом?</span><span class="acc__icon" aria-hidden="true"></span>
+        </button>
+        <div class="acc__body"><div class="acc__inner">
+          <p>Можно, если готовы месяц беречь работу от прямого солнца, моря и бассейна. Если через неделю у вас самолёт в Египет — лучше перенести сеанс, так работа проживёт дольше.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONSULT FORM ============ -->
+<section class="section consult" id="consult">
+  <div class="container consult__grid">
+    <div class="consult__intro">
+      <span class="sec-index">10</span>
+      <h2 class="sec-title">Заявка на <em>консультацию</em></h2>
+      <p class="consult__lead">
+        Расскажите идею — подберём мастера, прикинем размер, время и стоимость.
+        Консультация бесплатная и ни к чему не обязывает.
+      </p>
+      <ul class="consult__benefits">
+        <li>Ответим в течение часа с 11:00 до 21:00</li>
+        <li>Подберём мастера под ваш стиль</li>
+        <li>Назовём вилку цены до записи</li>
+      </ul>
+      <p class="consult__alt">
+        Не любите формы? Пишите в Telegram: <a href="https://t.me/inkroom">@inkroom</a>
+        или звоните <a href="tel:+78120000000">+7 812 000-00-00</a>
+      </p>
+    </div>
+
+    <form class="form" id="consultForm" novalidate>
+      <div class="field">
+        <label for="name">Имя *</label>
+        <input type="text" id="name" name="name" placeholder="Как к вам обращаться" autocomplete="name" required>
+        <span class="field__err" data-err="name"></span>
+      </div>
+
+      <div class="field">
+        <label for="phone">Телефон *</label>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <span class="field__err" data-err="phone"></span>
+      </div>
+
+      <div class="field">
+        <label for="style">Стиль</label>
+        <select id="style" name="style">
+          <option value="">Ещё не решил(а)</option>
+          <option>Blackwork</option>
+          <option>Fine Line</option>
+          <option>Traditional</option>
+          <option>Realism</option>
+          <option>Geometric</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="master">Мастер</label>
+        <select id="master" name="master">
+          <option value="">Подберите за меня</option>
+          <option>Ева Корн</option>
+          <option>Артём Лис</option>
+          <option>Ника Соул</option>
+          <option>Марк Гуров</option>
+        </select>
+      </div>
+
+      <div class="field field--full">
+        <label for="idea">Идея, место на теле, размер</label>
+        <textarea id="idea" name="idea" rows="4" placeholder="Например: тонкая ветка полыни на предплечье, около 12 см, хочу в мае"></textarea>
+      </div>
+
+      <div class="field field--full check">
+        <input type="checkbox" id="agree" name="agree" required>
+        <label for="agree">Мне есть 18 лет, я согласен(на) с <a href="#contacts">политикой обработки данных</a> *</label>
+        <span class="field__err" data-err="agree"></span>
+      </div>
+
+      <button class="btn btn--solid btn--lg form__submit" type="submit">Отправить заявку</button>
+      <p class="form__hint">Никакого спама — только ответ по вашей заявке.</p>
+      <p class="form__success" id="formSuccess" hidden>Заявка принята. Мастер напишет вам в течение часа — проверьте телефон и Telegram.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CONTACTS ============ -->
+<section class="section contacts" id="contacts">
+  <div class="container">
+    <header class="sec-head">
+      <span class="sec-index">11</span>
+      <h2 class="sec-title">Контакты</h2>
+    </header>
+
+    <div class="contacts__grid">
+      <div class="contacts__col reveal">
+        <h3>Адрес</h3>
+        <p>Санкт-Петербург, наб. реки Фонтанки, 24, 3 этаж<br>Вход со двора, домофон 12</p>
+        <p class="muted">5 минут пешком от м. Гостиный двор</p>
+      </div>
+      <div class="contacts__col reveal delay-1">
+        <h3>Часы работы</h3>
+        <p>Пн–Вс · 11:00 — 22:00<br>Сеансы по записи</p>
+        <p class="muted">Консультации — до 21:00</p>
+      </div>
+      <div class="contacts__col reveal delay-2">
+        <h3>Связь</h3>
+        <p>
+          <a href="tel:+78120000000">+7 812 000-00-00</a><br>
+          <a href="mailto:hello@inkroom.ru">hello@inkroom.ru</a>
+        </p>
+        <p class="socials">
+          <a href="https://t.me/inkroom">Telegram</a>
+          <a href="https://vk.com/inkroom">VK</a>
+          <a href="https://wa.me/78120000000">WhatsApp</a>
+        </p>
+      </div>
+      <div class="contacts__col reveal delay-3">
+        <h3>Реквизиты</h3>
+        <p class="muted">ИП Корнилова Е. А.<br>ИНН 7801000000<br>ОГРНИП 000000000000000</p>
+      </div>
+    </div>
+
+    <a class="contacts__map" href="https://yandex.ru/maps/?text=Санкт-Петербург,%20набережная%20реки%20Фонтанки,%2024" target="_blank" rel="noopener">
+      <img src="images/studio-front.jpg" alt="Вывеска тату-студии" loading="lazy">
+      <span class="contacts__map-label">Наб. реки Фонтанки, 24 — открыть на Яндекс.Картах ↗</span>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <a class="logo logo--footer" href="#hero">
+      <img src="images/logo.png" alt="" width="28" height="28">
+      <span class="logo__text">INK<em>ROOM</em></span>
+    </a>
+    <p class="footer__copy">© <span id="year">2026</span> INKROOM. Все работы принадлежат мастерам студии.</p>
+    <p class="footer__credits">Фотографии: <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a> — демо-контент, заменяется на работы студии.</p>
+    <p class="footer__legal">18+. Татуировка — необратимая процедура. Есть противопоказания, уточняйте у мастера.</p>
+    <a class="footer__up" href="#hero">Наверх ↑</a>
+  </div>
+</footer>
+
+<!-- ============ LIGHTBOX ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр работы" hidden>
+  <button class="lightbox__close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button class="lightbox__nav lightbox__nav--prev" id="lbPrev" aria-label="Предыдущая работа">←</button>
+  <figure class="lightbox__fig">
+    <img id="lbImg" src="" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Следующая работа">→</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
