@@ -2,30 +2,62 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>INKROOM — тату-студия в Санкт-Петербурге</title>
-<meta name="description" content="INKROOM — студия татуировки. Blackwork, fine line, traditional, realism, geometric. Портфолио мастеров, честные цены, бесплатная консультация и эскиз.">
+<meta name="description" content="INKROOM — студия татуировки в Санкт-Петербурге. Blackwork, fine line, traditional, realism, geometric. Портфолио мастеров, честные цены, бесплатная консультация и эскиз.">
+<link rel="canonical" href="https://inkroom.ru/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="theme-color" content="#0b0b0c">
-<link rel="icon" href="images/logo.png" type="image/png">
-<meta property="og:title" content="INKROOM — тату-студия">
-<meta property="og:description" content="Авторские татуировки. Портфолио мастеров и запись на консультацию.">
-<meta property="og:image" content="images/hero.jpg">
+<meta name="format-detection" content="telephone=no">
+
+<!-- Иконки -->
+<link rel="icon" href="images/icon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="images/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="images/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="INKROOM">
+<meta property="og:url" content="https://inkroom.ru/">
+<meta property="og:title" content="INKROOM — тату-студия в Санкт-Петербурге">
+<meta property="og:description" content="Авторские татуировки: blackwork, fine line, traditional, realism, geometric. Портфолио мастеров и запись на бесплатную консультацию.">
+<meta property="og:image" content="https://inkroom.ru/images/hero.jpg">
+<meta property="og:image:width" content="2000">
+<meta property="og:image:height" content="1315">
+<meta property="og:image:alt" content="Крупная татуировка на спине, работа мастера INKROOM">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="INKROOM — тату-студия в Санкт-Петербурге">
+<meta name="twitter:description" content="Авторские татуировки и портфолио мастеров. Бесплатная консультация и эскиз.">
+<meta name="twitter:image" content="https://inkroom.ru/images/hero.jpg">
+<meta name="twitter:image:alt" content="Крупная татуировка на спине, работа мастера INKROOM">
+
+<!-- Шрифты: только реально используемые начертания -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=JetBrains+Mono&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+<!-- LCP-картинка: тот же набор, что и в <picture>, чтобы не было двойной загрузки -->
+<link rel="preload" as="image" type="image/webp" fetchpriority="high"
+      imagesrcset="images/hero-480.webp 480w, images/hero-960.webp 960w, images/hero-1400.webp 1400w, images/hero.webp 2000w"
+      imagesizes="100vw">
+
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="grain" aria-hidden="true"></div>
 
-<a class="skip-link" href="#hero">К основному содержимому</a>
+<a class="skip-link" href="#main">К основному содержимому</a>
 
 <!-- ============ HEADER ============ -->
 <header class="header" id="header">
   <div class="header__inner">
     <a class="logo" href="#hero" aria-label="INKROOM — на главную">
-      <img src="images/logo.png" alt="" class="logo__mark" width="34" height="34">
+      <img src="images/logo.png" alt="" class="logo__mark" width="34" height="34" decoding="async">
       <span class="logo__text">INK<em>ROOM</em></span>
     </a>
 
@@ -36,6 +68,8 @@
         <li><a href="#portfolio">Портфолио</a></li>
         <li><a href="#styles">Стили</a></li>
         <li><a href="#process">Процесс</a></li>
+        <li><a href="#prep">Подготовка</a></li>
+        <li><a href="#reviews">Отзывы</a></li>
         <li><a href="#prices">Цены</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contacts">Контакты</a></li>
@@ -43,7 +77,7 @@
       <a class="btn btn--ghost nav__cta" href="#consult">Записаться</a>
     </nav>
 
-    <a class="btn btn--solid header__cta" href="#consult">Консультация</a>
+    <a class="btn btn--solid header__cta" href="#consult">Записаться</a>
 
     <button class="burger" id="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav">
       <span></span><span></span>
@@ -51,12 +85,15 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="hero">
   <div class="hero__media">
-    <img src="images/hero.jpg" alt="Крупная татуировка на спине, работа мастера INKROOM" fetchpriority="high">
+    <picture>
+      <source type="image/webp" srcset="images/hero-480.webp 480w, images/hero-960.webp 960w, images/hero-1400.webp 1400w, images/hero.webp 2000w" sizes="100vw">
+      <img srcset="images/hero-480.jpg 480w, images/hero-960.jpg 960w, images/hero-1400.jpg 1400w, images/hero.jpg 2000w" sizes="100vw" width="2000" height="1315" decoding="async" src="images/hero.jpg" alt="Крупная татуировка на спине, работа мастера INKROOM" fetchpriority="high">
+    </picture>
   </div>
 
   <div class="hero__content container">
@@ -70,7 +107,7 @@
 
     <div class="hero__bottom">
       <p class="hero__lead reveal delay-3">
-        Пять мастеров, одна одержимость деталью. Мы не копируем чужие эскизы —
+        Четыре мастера, одна одержимость деталью. Мы не копируем чужие эскизы —
         мы рисуем твою историю под твою анатомию.
       </p>
       <div class="hero__actions reveal delay-4">
@@ -81,10 +118,10 @@
   </div>
 
   <div class="hero__stats">
-    <div class="stat"><span class="stat__num" data-count="4200">0</span><span class="stat__label">работ сделано</span></div>
-    <div class="stat"><span class="stat__num" data-count="11">0</span><span class="stat__label">лет студии</span></div>
-    <div class="stat"><span class="stat__num" data-count="5">0</span><span class="stat__label">мастеров</span></div>
-    <div class="stat"><span class="stat__num" data-count="98" data-suffix="%">0</span><span class="stat__label">заживают без правок</span></div>
+    <div class="stat"><span class="stat__num" data-count="4200">4 200</span><span class="stat__label">работ сделано</span></div>
+    <div class="stat"><span class="stat__num" data-count="11">11</span><span class="stat__label">лет студии</span></div>
+    <div class="stat"><span class="stat__num" data-count="4">4</span><span class="stat__label">мастера</span></div>
+    <div class="stat"><span class="stat__num" data-count="98" data-suffix="%">98%</span><span class="stat__label">заживают без правок</span></div>
   </div>
 
   <a class="hero__scroll" href="#about" aria-label="Листать вниз"><span></span>scroll</a>
@@ -130,10 +167,16 @@
 
       <div class="about__media">
         <figure class="about__fig about__fig--1 reveal">
-          <img src="images/studio1.jpg" alt="Рабочий столик мастера со стерильными инструментами" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/studio1-480.webp 480w, images/studio1-960.webp 960w, images/studio1.webp 1500w" sizes="(max-width:980px) 100vw, 50vw">
+            <img srcset="images/studio1-480.jpg 480w, images/studio1-960.jpg 960w, images/studio1.jpg 1500w" sizes="(max-width:980px) 100vw, 50vw" width="1500" height="1000" decoding="async" src="images/studio1.jpg" alt="Рабочий столик мастера со стерильными инструментами" loading="lazy">
+          </picture>
         </figure>
         <figure class="about__fig about__fig--2 reveal delay-2">
-          <img src="images/studio2.jpg" alt="Мастер набивает татуировку на предплечье" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/studio2-480.webp 480w, images/studio2-960.webp 960w, images/studio2.webp 1500w" sizes="(max-width:980px) 100vw, 50vw">
+            <img srcset="images/studio2-480.jpg 480w, images/studio2-960.jpg 960w, images/studio2.jpg 1500w" sizes="(max-width:980px) 100vw, 50vw" width="1500" height="1000" decoding="async" src="images/studio2.jpg" alt="Мастер набивает татуировку на предплечье" loading="lazy">
+          </picture>
           <figcaption>Кабинет №2 · сеанс в работе</figcaption>
         </figure>
       </div>
@@ -153,7 +196,10 @@
     <div class="masters__grid">
       <article class="master reveal">
         <div class="master__photo">
-          <img src="images/photo1.jpg" alt="Ева Корн, мастер студии INKROOM" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/photo1-480.webp 480w, images/photo1.webp 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw">
+            <img srcset="images/photo1-480.jpg 480w, images/photo1.jpg 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw" width="1000" height="1500" decoding="async" src="images/photo1.jpg" alt="Ева Корн, мастер студии INKROOM" loading="lazy">
+          </picture>
           <span class="master__initials" aria-hidden="true">ЕК</span>
         </div>
         <div class="master__body">
@@ -171,7 +217,10 @@
 
       <article class="master reveal delay-1">
         <div class="master__photo">
-          <img src="images/photo2.jpg" alt="Артём Лис, мастер студии INKROOM" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/photo2-480.webp 480w, images/photo2.webp 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw">
+            <img srcset="images/photo2-480.jpg 480w, images/photo2.jpg 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw" width="1000" height="1497" decoding="async" src="images/photo2.jpg" alt="Артём Лис, мастер студии INKROOM" loading="lazy">
+          </picture>
           <span class="master__initials" aria-hidden="true">АЛ</span>
         </div>
         <div class="master__body">
@@ -189,7 +238,10 @@
 
       <article class="master reveal delay-2">
         <div class="master__photo">
-          <img src="images/master3.jpg" alt="Ника Соул за работой с клиентом" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/master3-480.webp 480w, images/master3.webp 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw">
+            <img srcset="images/master3-480.jpg 480w, images/master3.jpg 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw" width="1000" height="1497" decoding="async" src="images/master3.jpg" alt="Ника Соул за работой с клиентом" loading="lazy">
+          </picture>
           <span class="master__initials" aria-hidden="true">НС</span>
         </div>
         <div class="master__body">
@@ -207,7 +259,10 @@
 
       <article class="master reveal delay-3">
         <div class="master__photo">
-          <img src="images/master4.jpg" alt="Марк Гуров во время сеанса" loading="lazy">
+          <picture>
+            <source type="image/webp" srcset="images/master4-480.webp 480w, images/master4.webp 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw">
+            <img srcset="images/master4-480.jpg 480w, images/master4.jpg 1000w" sizes="(max-width:640px) 100vw, (max-width:1180px) 50vw, 25vw" width="1000" height="1500" decoding="async" src="images/master4.jpg" alt="Марк Гуров во время сеанса" loading="lazy">
+          </picture>
           <span class="master__initials" aria-hidden="true">МГ</span>
         </div>
         <div class="master__body">
@@ -235,62 +290,100 @@
       <p class="sec-note">Больше 4 000 работ за 11 лет. Здесь — то, чем гордимся особенно.</p>
     </header>
 
-    <div class="filters" role="tablist" aria-label="Фильтр работ по стилю">
-      <button class="filter is-active" role="tab" aria-selected="true" data-filter="all">Все</button>
-      <button class="filter" role="tab" aria-selected="false" data-filter="blackwork">Blackwork</button>
-      <button class="filter" role="tab" aria-selected="false" data-filter="fine-line">Fine Line</button>
-      <button class="filter" role="tab" aria-selected="false" data-filter="traditional">Traditional</button>
-      <button class="filter" role="tab" aria-selected="false" data-filter="realism">Realism</button>
-      <button class="filter" role="tab" aria-selected="false" data-filter="geometric">Geometric</button>
+    <div class="filters" role="group" aria-label="Фильтр работ по стилю">
+      <button type="button" class="filter is-active" aria-pressed="true" data-filter="all">Все</button>
+      <button type="button" class="filter" aria-pressed="false" data-filter="blackwork">Blackwork</button>
+      <button type="button" class="filter" aria-pressed="false" data-filter="fine-line">Fine Line</button>
+      <button type="button" class="filter" aria-pressed="false" data-filter="traditional">Traditional</button>
+      <button type="button" class="filter" aria-pressed="false" data-filter="realism">Realism</button>
+      <button type="button" class="filter" aria-pressed="false" data-filter="geometric">Geometric</button>
     </div>
 
-    <div class="gallery" id="gallery">
+    <p class="sr-only" id="galleryStatus" role="status"></p>
+
+    <div class="gallery" id="gallery" role="group" aria-label="Работы студии">
       <figure class="work work--tall" data-style="blackwork">
-        <img src="images/work-blackwork-1.jpg" alt="Орнаментальный блэкворк на всю спину" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-blackwork-1-480.webp 480w, images/work-blackwork-1-960.webp 960w, images/work-blackwork-1.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-blackwork-1-480.jpg 480w, images/work-blackwork-1-960.jpg 960w, images/work-blackwork-1.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1820" decoding="async" src="images/work-blackwork-1.jpg" alt="Орнаментальный блэкворк на всю спину" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Орнамент на всю спину</span><span class="work__meta">Blackwork · Ева Корн · 4 сеанса</span></figcaption>
       </figure>
       <figure class="work" data-style="fine-line">
-        <img src="images/work-fineline-1.jpg" alt="Тонкая веточка и надпись на предплечье" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-fineline-1-480.webp 480w, images/work-fineline-1-960.webp 960w, images/work-fineline-1.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-fineline-1-480.jpg 480w, images/work-fineline-1-960.jpg 960w, images/work-fineline-1.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1733" decoding="async" src="images/work-fineline-1.jpg" alt="Тонкая веточка и надпись на предплечье" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Веточка и надпись</span><span class="work__meta">Fine Line · Ника Соул · 2 часа</span></figcaption>
       </figure>
       <figure class="work" data-style="realism">
-        <img src="images/work-realism-1.jpg" alt="Реалистичный рукав с тигром" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-realism-1-480.webp 480w, images/work-realism-1-960.webp 960w, images/work-realism-1.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-realism-1-480.jpg 480w, images/work-realism-1-960.jpg 960w, images/work-realism-1.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1950" decoding="async" src="images/work-realism-1.jpg" alt="Реалистичный рукав с тигром" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Тигр в рукаве</span><span class="work__meta">Realism · Артём Лис · 3 сеанса</span></figcaption>
       </figure>
       <figure class="work" data-style="geometric">
-        <img src="images/work-geometric-1.jpg" alt="Геометрическая стрела на предплечье" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-geometric-1-480.webp 480w, images/work-geometric-1-960.webp 960w, images/work-geometric-1.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-geometric-1-480.jpg 480w, images/work-geometric-1-960.jpg 960w, images/work-geometric-1.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1733" decoding="async" src="images/work-geometric-1.jpg" alt="Геометрическая стрела на предплечье" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Стрела на предплечье</span><span class="work__meta">Geometric · Ева Корн · 3 часа</span></figcaption>
       </figure>
       <figure class="work work--wide" data-style="traditional">
-        <img src="images/work-traditional-1.jpg" alt="Цветные традиционные татуировки на бедре" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-traditional-1-480.webp 480w, images/work-traditional-1-960.webp 960w, images/work-traditional-1-1400.webp 1400w, images/work-traditional-1.webp 1600w" sizes="(max-width:980px) 100vw, 50vw">
+          <img srcset="images/work-traditional-1-480.jpg 480w, images/work-traditional-1-960.jpg 960w, images/work-traditional-1-1400.jpg 1400w, images/work-traditional-1.jpg 1600w" sizes="(max-width:980px) 100vw, 50vw" width="1600" height="1600" decoding="async" src="images/work-traditional-1.jpg" alt="Цветные традиционные татуировки на бедре" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Классика на бедре</span><span class="work__meta">Traditional · Марк Гуров · 2 сеанса</span></figcaption>
       </figure>
       <figure class="work" data-style="blackwork">
-        <img src="images/work-blackwork-2.jpg" alt="Графичный чёрный рукав, переходящий на спину" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-blackwork-2-480.webp 480w, images/work-blackwork-2-960.webp 960w, images/work-blackwork-2.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-blackwork-2-480.jpg 480w, images/work-blackwork-2-960.jpg 960w, images/work-blackwork-2.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="867" decoding="async" src="images/work-blackwork-2.jpg" alt="Графичный чёрный рукав, переходящий на спину" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Графика по плечу и спине</span><span class="work__meta">Blackwork · Ева Корн · 6 часов</span></figcaption>
       </figure>
       <figure class="work" data-style="fine-line">
-        <img src="images/work-fineline-2.jpg" alt="Рукописная надпись на предплечье" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-fineline-2-480.webp 480w, images/work-fineline-2-960.webp 960w, images/work-fineline-2.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-fineline-2-480.jpg 480w, images/work-fineline-2-960.jpg 960w, images/work-fineline-2.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1950" decoding="async" src="images/work-fineline-2.jpg" alt="Рукописная надпись на предплечье" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Рукописная надпись</span><span class="work__meta">Fine Line · Ника Соул · 1,5 часа</span></figcaption>
       </figure>
       <figure class="work work--tall" data-style="geometric">
-        <img src="images/work-geometric-2.jpg" alt="Мандала между лопаток" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-geometric-2-480.webp 480w, images/work-geometric-2-960.webp 960w, images/work-geometric-2.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-geometric-2-480.jpg 480w, images/work-geometric-2-960.jpg 960w, images/work-geometric-2.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1950" decoding="async" src="images/work-geometric-2.jpg" alt="Мандала между лопаток" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Мандала между лопаток</span><span class="work__meta">Geometric · Ева Корн · 2 сеанса</span></figcaption>
       </figure>
       <figure class="work" data-style="realism">
-        <img src="images/work-realism-2.jpg" alt="Ботанический рукав в чёрно-серой технике" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-realism-2-480.webp 480w, images/work-realism-2-960.webp 960w, images/work-realism-2.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-realism-2-480.jpg 480w, images/work-realism-2-960.jpg 960w, images/work-realism-2.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1950" decoding="async" src="images/work-realism-2.jpg" alt="Ботанический рукав в чёрно-серой технике" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Ботанический рукав, black &amp; grey</span><span class="work__meta">Realism · Артём Лис · 4 сеанса</span></figcaption>
       </figure>
       <figure class="work" data-style="traditional">
-        <img src="images/work-traditional-2.jpg" alt="Олдскул на плече и тонкие линии на кисти" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-traditional-2-480.webp 480w, images/work-traditional-2-960.webp 960w, images/work-traditional-2.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-traditional-2-480.jpg 480w, images/work-traditional-2-960.jpg 960w, images/work-traditional-2.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="1950" decoding="async" src="images/work-traditional-2.jpg" alt="Олдскул на плече и тонкие линии на кисти" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Олдскул на плече</span><span class="work__meta">Traditional · Марк Гуров · 5 часов</span></figcaption>
       </figure>
       <figure class="work" data-style="blackwork">
-        <img src="images/work-blackwork-3.jpg" alt="Крупный леттеринг на спине" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-blackwork-3-480.webp 480w, images/work-blackwork-3-960.webp 960w, images/work-blackwork-3.webp 1300w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-blackwork-3-480.jpg 480w, images/work-blackwork-3-960.jpg 960w, images/work-blackwork-3.jpg 1300w" sizes="(max-width:980px) 50vw, 25vw" width="1300" height="867" decoding="async" src="images/work-blackwork-3.jpg" alt="Крупный леттеринг на спине" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Леттеринг на спине</span><span class="work__meta">Blackwork · Ева Корн · 3 часа</span></figcaption>
       </figure>
       <figure class="work" data-style="geometric">
-        <img src="images/work-geometric-3.jpg" alt="Геометрический кристалл на предплечье" loading="lazy">
+        <picture>
+          <source type="image/webp" srcset="images/work-geometric-3-480.webp 480w, images/work-geometric-3.webp 900w" sizes="(max-width:980px) 50vw, 25vw">
+          <img srcset="images/work-geometric-3-480.jpg 480w, images/work-geometric-3.jpg 900w" sizes="(max-width:980px) 50vw, 25vw" width="900" height="1200" decoding="async" src="images/work-geometric-3.jpg" alt="Геометрический кристалл на предплечье" loading="lazy">
+        </picture>
         <figcaption><span class="work__title">Кристалл, дотворк</span><span class="work__meta">Geometric · Ева Корн · 4 часа</span></figcaption>
       </figure>
     </div>
@@ -319,7 +412,10 @@
         <h3 class="style-row__name">Blackwork</h3>
         <p class="style-row__desc">Плотный чёрный, орнаменты, абстракция и cover-up. Читается на любой дистанции и почти не выцветает.</p>
         <span class="style-row__tag">от 9 000 ₽</span>
-        <div class="style-row__img"><img src="images/style-blackwork.jpg" alt="Пример работы в стиле blackwork" loading="lazy"></div>
+        <div class="style-row__img"><picture>
+  <source type="image/webp" srcset="images/style-blackwork-480.webp 480w, images/style-blackwork.webp 900w" sizes="230px">
+  <img srcset="images/style-blackwork-480.jpg 480w, images/style-blackwork.jpg 900w" sizes="230px" width="900" height="720" decoding="async" src="images/style-blackwork.jpg" alt="Пример работы в стиле blackwork" loading="lazy">
+</picture></div>
       </article>
 
       <article class="style-row reveal">
@@ -327,7 +423,10 @@
         <h3 class="style-row__name">Fine Line</h3>
         <p class="style-row__desc">Тонкая линия одной иглой: ботаника, надписи, микро-сюжеты. Деликатно, но требует ухода и коррекции.</p>
         <span class="style-row__tag">от 6 000 ₽</span>
-        <div class="style-row__img"><img src="images/style-fine-line.jpg" alt="Пример работы в стиле fine line" loading="lazy"></div>
+        <div class="style-row__img"><picture>
+  <source type="image/webp" srcset="images/style-fine-line-480.webp 480w, images/style-fine-line.webp 900w" sizes="230px">
+  <img srcset="images/style-fine-line-480.jpg 480w, images/style-fine-line.jpg 900w" sizes="230px" width="900" height="899" decoding="async" src="images/style-fine-line.jpg" alt="Пример работы в стиле fine line" loading="lazy">
+</picture></div>
       </article>
 
       <article class="style-row reveal">
@@ -335,7 +434,10 @@
         <h3 class="style-row__name">Traditional</h3>
         <p class="style-row__desc">Жирный контур, ограниченная палитра, вечные сюжеты. Стиль, который будет выглядеть хорошо и через 20 лет.</p>
         <span class="style-row__tag">от 8 500 ₽</span>
-        <div class="style-row__img"><img src="images/style-traditional.jpg" alt="Пример работы в стиле traditional" loading="lazy"></div>
+        <div class="style-row__img"><picture>
+  <source type="image/webp" srcset="images/style-traditional-480.webp 480w, images/style-traditional.webp 900w" sizes="230px">
+  <img srcset="images/style-traditional-480.jpg 480w, images/style-traditional.jpg 900w" sizes="230px" width="900" height="600" decoding="async" src="images/style-traditional.jpg" alt="Пример работы в стиле traditional" loading="lazy">
+</picture></div>
       </article>
 
       <article class="style-row reveal">
@@ -343,7 +445,10 @@
         <h3 class="style-row__name">Realism</h3>
         <p class="style-row__desc">Портреты, животные, фактуры в чёрно-сером. Долгие сеансы и максимум внимания к свету и тени.</p>
         <span class="style-row__tag">от 12 000 ₽</span>
-        <div class="style-row__img"><img src="images/style-realism.jpg" alt="Пример работы в стиле realism" loading="lazy"></div>
+        <div class="style-row__img"><picture>
+  <source type="image/webp" srcset="images/style-realism-480.webp 480w, images/style-realism.webp 900w" sizes="230px">
+  <img srcset="images/style-realism-480.jpg 480w, images/style-realism.jpg 900w" sizes="230px" width="900" height="729" decoding="async" src="images/style-realism.jpg" alt="Пример работы в стиле realism" loading="lazy">
+</picture></div>
       </article>
 
       <article class="style-row reveal">
@@ -351,7 +456,10 @@
         <h3 class="style-row__name">Geometric</h3>
         <p class="style-row__desc">Симметрия, точная разметка по анатомии, дотворк и линии. Идеально ложится на предплечья и спину.</p>
         <span class="style-row__tag">от 9 500 ₽</span>
-        <div class="style-row__img"><img src="images/style-geometric.jpg" alt="Пример работы в стиле geometric" loading="lazy"></div>
+        <div class="style-row__img"><picture>
+  <source type="image/webp" srcset="images/style-geometric-480.webp 480w, images/style-geometric.webp 900w" sizes="230px">
+  <img srcset="images/style-geometric-480.jpg 480w, images/style-geometric.jpg 900w" sizes="230px" width="900" height="1350" decoding="async" src="images/style-geometric.jpg" alt="Пример работы в стиле geometric" loading="lazy">
+</picture></div>
       </article>
     </div>
   </div>
@@ -444,7 +552,7 @@
       <p class="sec-note">4,9 из 5 по 380 отзывам на Яндекс.Картах и 2GIS.</p>
     </header>
 
-    <div class="reviews__viewport">
+    <div class="reviews__viewport" id="reviewsViewport" aria-roledescription="carousel" aria-label="Отзывы клиентов" aria-live="polite">
       <div class="reviews__track" id="reviewsTrack">
         <blockquote class="review">
           <p>Пришла с расплывчатой идеей «что-то про море», ушла с рукавом, который люблю до сих пор. Ева переделала эскиз трижды и ни разу не вздохнула.</p>
@@ -470,9 +578,10 @@
     </div>
 
     <div class="reviews__controls">
-      <button class="rbtn" id="revPrev" aria-label="Предыдущий отзыв">←</button>
-      <div class="reviews__dots" id="revDots"></div>
-      <button class="rbtn" id="revNext" aria-label="Следующий отзыв">→</button>
+      <button type="button" class="rbtn" id="revPrev" aria-label="Предыдущий отзыв">←</button>
+      <div class="reviews__dots" id="revDots" role="group" aria-label="Выбрать отзыв"></div>
+      <button type="button" class="rbtn" id="revNext" aria-label="Следующий отзыв">→</button>
+      <button type="button" class="rbtn rbtn--play" id="revPlay" aria-label="Остановить автопрокрутку"><span aria-hidden="true">❙❙</span></button>
     </div>
   </div>
 </section>
@@ -543,58 +652,58 @@
 
     <div class="accordion" id="accordion">
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-1" id="acc-head-1">
           <span>Это очень больно?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-1" role="region" aria-labelledby="acc-head-1" hidden><div class="acc__inner">
           <p>Терпимо. Ощущение похоже на царапанье кошки или лёгкий ожог. Больнее всего рёбра, внутренняя сторона плеча, шея и стопы; спокойнее всего — предплечье, бедро, икра. Мы делаем перерывы каждый час и никуда не спешим.</p>
         </div></div>
       </div>
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-2" id="acc-head-2">
           <span>С какого возраста вы делаете татуировки?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-2" role="region" aria-labelledby="acc-head-2" hidden><div class="acc__inner">
           <p>С 18 лет по паспорту, без исключений и без «пришёл с родителями». Это позиция студии и требование закона.</p>
         </div></div>
       </div>
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-3" id="acc-head-3">
           <span>Сколько заживает татуировка?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-3" role="region" aria-labelledby="acc-head-3" hidden><div class="acc__inner">
           <p>Поверхностно — 7–10 дней, полностью кожа восстанавливается за 4–6 недель. В первую неделю носите плёнку, дальше увлажняющий крем 2 раза в день и никакого солнца, бассейна и сауны.</p>
         </div></div>
       </div>
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-4" id="acc-head-4">
           <span>Можно прийти со своим эскизом?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-4" role="region" aria-labelledby="acc-head-4" hidden><div class="acc__inner">
           <p>Да, если это ваша идея или работа вашего иллюстратора. Точные копии чужих татуировок мы не делаем — но с радостью нарисуем авторскую версию в том же настроении.</p>
         </div></div>
       </div>
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-5" id="acc-head-5">
           <span>Делаете ли вы перекрытие старых татуировок?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-5" role="region" aria-labelledby="acc-head-5" hidden><div class="acc__inner">
           <p>Да, cover-up — сильная сторона Евы и Марка. Пришлите фото при хорошем свете: иногда достаточно одного сеанса, иногда нужна пара сеансов лазера перед работой. Честно скажем, что реально получится.</p>
         </div></div>
       </div>
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-6" id="acc-head-6">
           <span>Что если мне не понравится эскиз?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-6" role="region" aria-labelledby="acc-head-6" hidden><div class="acc__inner">
           <p>Две правки входят в стоимость. Если после них идея всё ещё не совпала — возвращаем предоплату полностью и расстаёмся друзьями. Татуировка навсегда, компромиссы тут лишние.</p>
         </div></div>
       </div>
       <div class="acc">
-        <button class="acc__head" aria-expanded="false">
+        <button class="acc__head" type="button" aria-expanded="false" aria-controls="acc-body-7" id="acc-head-7">
           <span>Можно ли делать татуировку летом?</span><span class="acc__icon" aria-hidden="true"></span>
         </button>
-        <div class="acc__body"><div class="acc__inner">
+        <div class="acc__body" id="acc-body-7" role="region" aria-labelledby="acc-head-7" hidden><div class="acc__inner">
           <p>Можно, если готовы месяц беречь работу от прямого солнца, моря и бассейна. Если через неделю у вас самолёт в Египет — лучше перенести сеанс, так работа проживёт дольше.</p>
         </div></div>
       </div>
@@ -618,21 +727,22 @@
         <li>Назовём вилку цены до записи</li>
       </ul>
       <p class="consult__alt">
-        Не любите формы? Пишите в Telegram: <a href="https://t.me/inkroom">@inkroom</a>
+        Не любите формы? Пишите в Telegram: <a href="https://t.me/inkroom" target="_blank" rel="noopener noreferrer">@inkroom</a>
         или звоните <a href="tel:+78120000000">+7 812 000-00-00</a>
       </p>
     </div>
 
-    <form class="form" id="consultForm" novalidate>
+    <!-- action/method — резервный путь, если JS не загрузился; JS перехватывает submit -->
+    <form class="form" id="consultForm" action="mailto:hello@inkroom.ru" method="post" enctype="text/plain">
       <div class="field">
         <label for="name">Имя *</label>
-        <input type="text" id="name" name="name" placeholder="Как к вам обращаться" autocomplete="name" required>
+        <input type="text" id="name" name="name" placeholder="Как к вам обращаться" autocomplete="name" minlength="2" required>
         <span class="field__err" data-err="name"></span>
       </div>
 
       <div class="field">
         <label for="phone">Телефон *</label>
-        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" required>
+        <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel" inputmode="tel" maxlength="18" pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" required>
         <span class="field__err" data-err="phone"></span>
       </div>
 
@@ -666,12 +776,20 @@
 
       <div class="field field--full check">
         <input type="checkbox" id="agree" name="agree" required>
-        <label for="agree">Мне есть 18 лет, я согласен(на) с <a href="#contacts">политикой обработки данных</a> *</label>
+        <label for="agree">Мне есть 18 лет, я согласен(на) с <a href="privacy.html" target="_blank" rel="noopener noreferrer">политикой обработки персональных данных</a> *</label>
         <span class="field__err" data-err="agree"></span>
       </div>
 
+      <!-- Ловушка для ботов: реальный человек это поле не видит и не заполняет -->
+      <div class="hp" aria-hidden="true">
+        <label for="company">Не заполняйте это поле</label>
+        <input type="text" id="company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+      <input type="hidden" id="formTs" name="ts" value="">
+
       <button class="btn btn--solid btn--lg form__submit" type="submit">Отправить заявку</button>
       <p class="form__hint">Никакого спама — только ответ по вашей заявке.</p>
+      <noscript><p class="form__hint">Скрипты отключены: кнопка откроется в почтовом клиенте. Можно просто написать на <a href="mailto:hello@inkroom.ru">hello@inkroom.ru</a> или в <a href="https://t.me/inkroom" target="_blank" rel="noopener noreferrer">Telegram</a>.</p></noscript>
       <p class="form__success" id="formSuccess" hidden>Заявка принята. Мастер напишет вам в течение часа — проверьте телефон и Telegram.</p>
     </form>
   </div>
@@ -703,9 +821,9 @@
           <a href="mailto:hello@inkroom.ru">hello@inkroom.ru</a>
         </p>
         <p class="socials">
-          <a href="https://t.me/inkroom">Telegram</a>
-          <a href="https://vk.com/inkroom">VK</a>
-          <a href="https://wa.me/78120000000">WhatsApp</a>
+          <a href="https://t.me/inkroom" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a href="https://vk.com/inkroom" target="_blank" rel="noopener noreferrer">VK</a>
+          <a href="https://wa.me/78120000000" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         </p>
       </div>
       <div class="contacts__col reveal delay-3">
@@ -714,8 +832,11 @@
       </div>
     </div>
 
-    <a class="contacts__map" href="https://yandex.ru/maps/?text=Санкт-Петербург,%20набережная%20реки%20Фонтанки,%2024" target="_blank" rel="noopener">
-      <img src="images/studio-front.jpg" alt="Вывеска тату-студии" loading="lazy">
+    <a class="contacts__map" href="https://yandex.ru/maps/?text=Санкт-Петербург,%20набережная%20реки%20Фонтанки,%2024" target="_blank" rel="noopener noreferrer">
+      <picture>
+        <source type="image/webp" srcset="images/studio-front-480.webp 480w, images/studio-front-960.webp 960w, images/studio-front.webp 1500w" sizes="100vw">
+        <img srcset="images/studio-front-480.jpg 480w, images/studio-front-960.jpg 960w, images/studio-front.jpg 1500w" sizes="100vw" width="1500" height="500" decoding="async" src="images/studio-front.jpg" alt="Вывеска тату-студии" loading="lazy">
+      </picture>
       <span class="contacts__map-label">Наб. реки Фонтанки, 24 — открыть на Яндекс.Картах ↗</span>
     </a>
   </div>
@@ -726,14 +847,14 @@
 <!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container footer__inner">
-    <a class="logo logo--footer" href="#hero">
-      <img src="images/logo.png" alt="" width="28" height="28">
+    <a class="logo logo--footer" href="#hero" aria-label="INKROOM — наверх страницы">
+      <img src="images/logo.png" alt="" width="28" height="28" loading="lazy" decoding="async">
       <span class="logo__text">INK<em>ROOM</em></span>
     </a>
     <p class="footer__copy">© <span id="year">2026</span> INKROOM. Все работы принадлежат мастерам студии.</p>
-    <p class="footer__credits">Фотографии: <a href="https://unsplash.com/license" target="_blank" rel="noopener">Unsplash</a> — демо-контент, заменяется на работы студии.</p>
+    <p class="footer__credits">Фотографии: <a href="https://unsplash.com/license" target="_blank" rel="noopener noreferrer">Unsplash</a> — демо-контент, заменяется на работы студии.</p>
     <p class="footer__legal">18+. Татуировка — необратимая процедура. Есть противопоказания, уточняйте у мастера.</p>
-    <a class="footer__up" href="#hero">Наверх ↑</a>
+    <a class="footer__up" href="#main">Наверх ↑</a>
   </div>
 </footer>
 
@@ -748,6 +869,195 @@
   <button class="lightbox__nav lightbox__nav--next" id="lbNext" aria-label="Следующая работа">→</button>
 </div>
 
-<script src="script.js"></script>
+<!-- ============ МИКРОРАЗМЕТКА ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "TattooParlor",
+        "LocalBusiness"
+      ],
+      "@id": "https://inkroom.ru/#studio",
+      "name": "INKROOM",
+      "description": "Тату-студия в центре Санкт-Петербурга: blackwork, fine line, traditional, realism, geometric. Авторские эскизы, бесплатная консультация и коррекция.",
+      "url": "https://inkroom.ru/",
+      "logo": "https://inkroom.ru/images/icon-512.png",
+      "image": [
+        "https://inkroom.ru/images/hero.jpg",
+        "https://inkroom.ru/images/studio1.jpg",
+        "https://inkroom.ru/images/studio-front.jpg"
+      ],
+      "telephone": "+7-812-000-00-00",
+      "email": "hello@inkroom.ru",
+      "priceRange": "6000–60000 ₽",
+      "currenciesAccepted": "RUB",
+      "foundingDate": "2014",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "наб. реки Фонтанки, 24, 3 этаж",
+        "addressLocality": "Санкт-Петербург",
+        "addressRegion": "Санкт-Петербург",
+        "postalCode": "191011",
+        "addressCountry": "RU"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 59.9333,
+        "longitude": 30.3399
+      },
+      "hasMap": "https://yandex.ru/maps/?text=Санкт-Петербург, набережная реки Фонтанки, 24",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"
+          ],
+          "opens": "11:00",
+          "closes": "22:00"
+        }
+      ],
+      "sameAs": [
+        "https://t.me/inkroom",
+        "https://vk.com/inkroom",
+        "https://wa.me/78120000000"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "380",
+        "bestRating": "5"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Санкт-Петербург"
+      },
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Мини-татуировка (до 5 см)",
+          "price": "6000",
+          "priceCurrency": "RUB"
+        },
+        {
+          "@type": "Offer",
+          "name": "Средняя татуировка (10–20 см)",
+          "price": "18000",
+          "priceCurrency": "RUB"
+        },
+        {
+          "@type": "Offer",
+          "name": "Крупная форма (рукав, спина, бедро)",
+          "price": "60000",
+          "priceCurrency": "RUB"
+        }
+      ],
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "Ева Корн",
+          "jobTitle": "Тату-мастер, blackwork и geometric"
+        },
+        {
+          "@type": "Person",
+          "name": "Артём Лис",
+          "jobTitle": "Тату-мастер, realism и black & grey"
+        },
+        {
+          "@type": "Person",
+          "name": "Ника Соул",
+          "jobTitle": "Тату-мастер, fine line"
+        },
+        {
+          "@type": "Person",
+          "name": "Марк Гуров",
+          "jobTitle": "Тату-мастер, traditional и neo-traditional"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://inkroom.ru/#website",
+      "url": "https://inkroom.ru/",
+      "name": "INKROOM",
+      "inLanguage": "ru-RU",
+      "publisher": {
+        "@id": "https://inkroom.ru/#studio"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://inkroom.ru/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Это очень больно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Терпимо. Ощущение похоже на царапанье кошки или лёгкий ожог. Больнее всего рёбра, внутренняя сторона плеча, шея и стопы; спокойнее всего — предплечье, бедро, икра. Мы делаем перерывы каждый час и никуда не спешим."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "С какого возраста вы делаете татуировки?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "С 18 лет по паспорту, без исключений и без «пришёл с родителями». Это позиция студии и требование закона."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Сколько заживает татуировка?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Поверхностно — 7–10 дней, полностью кожа восстанавливается за 4–6 недель. В первую неделю носите плёнку, дальше увлажняющий крем 2 раза в день и никакого солнца, бассейна и сауны."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно прийти со своим эскизом?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, если это ваша идея или работа вашего иллюстратора. Точные копии чужих татуировок мы не делаем — но с радостью нарисуем авторскую версию в том же настроении."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Делаете ли вы перекрытие старых татуировок?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, cover-up — сильная сторона Евы и Марка. Пришлите фото при хорошем свете: иногда достаточно одного сеанса, иногда нужна пара сеансов лазера перед работой. Честно скажем, что реально получится."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что если мне не понравится эскиз?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Две правки входят в стоимость. Если после них идея всё ещё не совпала — возвращаем предоплату полностью и расстаёмся друзьями. Татуировка навсегда, компромиссы тут лишние."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли делать татуировку летом?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Можно, если готовы месяц беречь работу от прямого солнца, моря и бассейна. Если через неделю у вас самолёт в Египет — лучше перенести сеанс, так работа проживёт дольше."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script src="script.js" defer></script>
 </body>
 </html>
