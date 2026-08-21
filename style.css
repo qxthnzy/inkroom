@@ -25,6 +25,10 @@
   --font-sans:"Inter","Helvetica Neue",Arial,sans-serif;
   --font-mono:"JetBrains Mono","SF Mono",Menlo,monospace;
 
+  /* «01 / 11» в шапках секций: значение проставляет JS по числу .sec-index,
+     здесь — только фолбэк на случай, если скрипт не загрузился */
+  --sec-total:"11";
+
   --pad:clamp(20px,5vw,72px);
   --maxw:1440px;
   --sec-y:clamp(72px,11vw,160px);
@@ -45,7 +49,10 @@ body{
   -webkit-font-smoothing:antialiased;
 }
 img{max-width:100%;display:block;height:auto}
-/* <picture> не должен ломать layout: img остаётся прямым потомком грида/флекса */
+/* <picture> не должен ломать layout: img остаётся прямым потомком грида/флекса.
+   display:contents убирает элемент из дерева доступности (в старых Firefox/WebKit
+   это ломало элементы с собственной семантикой), но <picture> — обёртка без роли
+   и без ARIA: alt живёт на <img>, поэтому терять здесь нечего. */
 picture{display:contents}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -74,6 +81,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* постоянный композитинг fixed-слоя 150%×150% на слабых телефонах не окупается */
 @media (max-width:640px),(prefers-reduced-data:reduce){
   .grain{animation:none;will-change:auto}
+  /* та же логика для бесконечной бегущей строки: вечная анимация греет GPU */
+  .marquee__track{animation:none;will-change:auto}
 }
 @keyframes grain{
   0%,100%{transform:translate(0,0)}
@@ -108,7 +117,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:block;font-family:var(--font-mono);font-size:11px;letter-spacing:.3em;
   color:var(--ink-3);margin-bottom:18px;
 }
-.sec-index::after{content:" / 11"}
+.sec-index::after{content:" / " var(--sec-total)}
 .sec-title{
   font-family:var(--font-display);
   font-weight:900;
@@ -181,6 +190,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   border-bottom-color:var(--line-2);
 }
 .header.is-hidden{transform:translateY(-100%);transition:transform .45s var(--ease)}
+/* backdrop-filter делает шапку containing block для position:fixed потомков —
+   раскрытое меню перестало бы быть полноэкранным и схлопнулось бы в её высоту.
+   Пока меню открыто, блюр и фон снимаем: под ними всё равно сплошной оверлей. */
+.header.has-menu,.header.has-menu.is-stuck{
+  background:transparent;border-bottom-color:transparent;
+  -webkit-backdrop-filter:none;backdrop-filter:none;
+}
 .header__inner{
   max-width:var(--maxw);margin:0 auto;
   padding:18px max(var(--pad),env(safe-area-inset-right)) 18px max(var(--pad),env(safe-area-inset-left));
@@ -206,8 +222,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .nav__list a:hover,.nav__list a.is-active{color:var(--ink)}
 .nav__list a:hover::after,.nav__list a.is-active::after{width:100%}
-.nav__cta{display:none}
-.header__cta{display:inline-flex}
+.header__cta{display:inline-flex;position:relative;z-index:101}
 
 .burger{display:none;width:44px;height:44px;position:relative}
 .burger span{
@@ -274,7 +289,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   letter-spacing:.3em;text-transform:uppercase;color:var(--ink-3);
   display:flex;align-items:center;gap:12px;
 }
-.hero__scroll span{width:1px;height:60px;background:linear-gradient(var(--ink-3),transparent);animation:scrollLine 2.4s var(--ease) infinite}
+.hero__scroll-line{width:1px;height:60px;background:linear-gradient(var(--ink-3),transparent);animation:scrollLine 2.4s var(--ease) infinite}
 @keyframes scrollLine{0%{transform:scaleY(.2);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(.2);transform-origin:bottom}}
 
 /* ---------- Бегущая строка ---------- */
@@ -350,10 +365,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 
 /* ---------- Портфолио ---------- */
-.filters{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
-.filter{flex:0 0 auto}
+.filters-wrap{position:relative;margin-bottom:34px}
+.filters{display:flex;flex-wrap:wrap;gap:10px}
 .filter{
-  padding:10px 20px;border:1px solid var(--line);
+  flex:0 0 auto;padding:10px 20px;border:1px solid var(--line);
   font-family:var(--font-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
   color:var(--ink-2);transition:.35s var(--ease);
 }
@@ -372,6 +387,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .work--tall{grid-row:span 2;aspect-ratio:4/9}
 .work--wide{grid-column:span 2;aspect-ratio:8/5}
+.work__btn{position:absolute;inset:0;display:block;cursor:zoom-in}
+.work__btn:focus-visible{outline-offset:-4px}
 .work img{
   width:100%;height:100%;object-fit:cover;
   transition:transform 1.2s var(--ease),filter .6s var(--ease);
@@ -379,7 +396,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 }
 .work:hover img{transform:scale(1.07);filter:grayscale(0) brightness(1.03) contrast(1)}
 .work figcaption{
-  position:absolute;inset:auto 0 0 0;padding:20px;
+  /* подпись лежит поверх ссылки — клики должны проходить сквозь неё */
+  position:absolute;inset:auto 0 0 0;padding:20px;pointer-events:none;
   background:linear-gradient(transparent,rgba(11,11,12,.92));
   transform:translateY(12px);opacity:0;transition:.45s var(--ease);
 }
@@ -565,6 +583,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   text-transform:uppercase;color:var(--ink-3);
 }
 .field input,.field select,.field textarea{
+  /* запас снизу, чтобы кнопка «Отправить» не уезжала под экранную клавиатуру */
+  scroll-margin-block:100px 180px;
   width:100%;background:transparent;border:0;border-bottom:1px solid var(--line);
   color:var(--ink);font-family:var(--font-sans);font-size:16px;font-weight:300;
   padding:12px 0;transition:border-color .35s;border-radius:0;
@@ -576,13 +596,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:28px;
 }
 .field select option{background:var(--bg-2);color:var(--ink)}
-.field input::placeholder,.field textarea::placeholder{color:var(--ink-3);opacity:.6}
+/* маска телефона в placeholder — значимая подсказка, а не декор:
+   держим полный контраст (opacity:1 нужен ещё и Firefox, у него свой .54) */
+.field input::placeholder,.field textarea::placeholder{color:var(--ink-3);opacity:1}
 .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-bottom-color:var(--ink)}
-.field.has-error input,.field.has-error select,.field.has-error textarea{border-bottom-color:#c8615a}
-.field__err{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:#c8615a;min-height:14px}
+.field.has-error input,.field.has-error select,.field.has-error textarea{border-bottom-color:#eb857c}
+.field__err{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.1em;color:#eb857c;min-height:14px}
 /* подсветка поля, заполненного из карточки мастера/тарифа: класс, чтобы не затирать .has-error */
 .field .is-flash{border-bottom-color:var(--ink);transition:border-color .3s}
-.field.has-error .is-flash{border-bottom-color:#c8615a}
+.field.has-error .is-flash{border-bottom-color:#eb857c}
 
 .check{flex-direction:row;align-items:flex-start;gap:12px;flex-wrap:wrap;padding-top:6px}
 .check input{width:18px;height:18px;flex:0 0 18px;accent-color:var(--ink);margin-top:2px}
@@ -594,10 +616,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .check .field__err{flex-basis:100%}
 .form__submit{grid-column:1/-1;justify-self:start}
 .form__hint{grid-column:1/-1;margin:0;font-size:12.5px;color:var(--ink-3)}
-.form__success{
+.form__success,.form__error{
   grid-column:1/-1;margin:0;padding:18px 22px;border:1px solid var(--line);
   background:var(--bg-3);color:var(--ink);font-size:14.5px;
 }
+.form__error{border-color:#eb857c}
+.form__error a{color:var(--ink);border-bottom:1px solid var(--line)}
 
 /* ---------- Контакты ---------- */
 .contacts__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,3vw,44px);border-top:1px solid var(--line-2)}
@@ -635,6 +659,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:flex;flex-wrap:wrap;align-items:center;gap:18px 34px;justify-content:space-between;
 }
 .footer__copy,.footer__legal,.footer__credits{margin:0;font-size:12.5px;color:var(--ink-3)}
+.footer__nav{
+  display:flex;flex-wrap:wrap;gap:10px 22px;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-2);
+}
+.footer__nav a{border-bottom:1px solid transparent;transition:border-color .3s,color .3s}
+.footer__nav a:hover{color:var(--ink);border-bottom-color:var(--ink)}
 .footer__credits{flex-basis:100%;order:4;padding-top:6px}
 .footer__credits a{border-bottom:1px solid var(--line)}
 .footer__credits a:hover{color:var(--ink);border-color:var(--ink)}
@@ -663,7 +694,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   display:grid;place-items:center;font-size:18px;transition:.3s;
 }
 .lightbox__nav:hover,.lightbox__close:hover{background:var(--ink);color:var(--bg)}
-body.no-scroll{overflow:hidden}
+/* overflow:hidden на body в мобильном Safari скролл не блокирует — страница
+   продолжает ехать под модалкой. Фиксируем body и компенсируем сдвиг: сам
+   scrollY сохраняет и возвращает JS (см. lockScroll в script.js). */
+body.no-scroll{position:fixed;left:0;right:0;width:100%;overflow:hidden}
 
 /* ---------- Правовая страница ---------- */
 .legal{padding-top:calc(var(--sec-y) + 40px)}
@@ -687,21 +721,6 @@ body.no-scroll{overflow:hidden}
 
 /* ---------- 6. Адаптив ---------- */
 @media (max-width:1180px){
-  /* 10 пунктов меню + логотип + CTA перестают помещаться в строку раньше, чем на 980 */
-  .nav{
-    position:fixed;inset:0;background:var(--bg);flex-direction:column;
-    justify-content:center;gap:40px;transform:translateY(-100%);
-    transition:transform .55s var(--ease);z-index:99;
-    overflow-y:auto;padding:96px max(24px,env(safe-area-inset-left)) 48px;
-  }
-  .nav.is-open{transform:none}
-  .nav__list{flex-direction:column;text-align:center;gap:20px}
-  .nav__list a{font-size:15px;letter-spacing:.2em}
-  .nav__cta{display:inline-flex}
-  .header__cta{display:none}
-  .burger{display:block;z-index:101}
-  .logo{position:relative;z-index:101}
-
   .masters__grid{grid-template-columns:repeat(2,1fr);gap:34px}
   .steps{grid-template-columns:repeat(2,1fr)}
   .style-row{grid-template-columns:60px 1fr auto;grid-template-areas:"num name tag" ". desc desc"}
@@ -714,6 +733,23 @@ body.no-scroll{overflow:hidden}
 }
 
 @media (max-width:980px){
+  /* шесть пунктов меню + логотип + CTA перестают помещаться в строку */
+  .nav{
+    position:fixed;inset:0;background:var(--bg);flex-direction:column;
+    justify-content:center;gap:40px;transform:translateY(-100%);
+    transition:transform .55s var(--ease);z-index:99;
+    overflow-y:auto;
+    padding:96px max(24px,env(safe-area-inset-right)) 48px max(24px,env(safe-area-inset-left));
+  }
+  .nav.is-open{transform:none}
+  .nav__list{flex-direction:column;text-align:center;gap:20px}
+  .nav__list a{font-size:15px;letter-spacing:.2em}
+  .burger{display:block;z-index:101}
+  .logo{position:relative;z-index:101}
+  /* CTA остаётся в шапке и над раскрытым меню — но компактнее */
+  .header__inner{gap:14px}
+  .header__cta{padding:11px 16px;font-size:10px;letter-spacing:.12em}
+
   .about__grid,.consult__grid,.prep__cols{grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr)}
   .work--wide{grid-column:span 2}
@@ -733,6 +769,9 @@ body.no-scroll{overflow:hidden}
 
 @media (max-width:640px){
   .hero{min-height:92vh;min-height:92svh;padding-block:120px 24px}
+  /* логотип + CTA + бургер должны уложиться в 360px без переполнения */
+  .logo__text{font-size:17px;letter-spacing:.12em}
+  .header__cta{padding:10px 14px;font-size:9.5px;letter-spacing:.1em}
   /* сетка 2×2 и её разделители задаются с 820px — см. блок выше */
 
   /* шесть фильтров в три ряда съедали экран: одна строка с горизонтальным скроллом */
@@ -744,6 +783,16 @@ body.no-scroll{overflow:hidden}
   }
   .filters::-webkit-scrollbar{display:none}
   .filter{scroll-snap-align:start}
+  /* градиент у правого края: иначе не видно, что за «Fine Line» есть ещё стили.
+     Класс вешает JS — он же знает, доехали ли до конца списка */
+  .filters-wrap::after{
+    content:"";position:absolute;z-index:2;pointer-events:none;
+    top:0;bottom:0;right:calc(-1 * max(var(--pad),env(safe-area-inset-right)));
+    width:64px;background:linear-gradient(90deg,rgba(11,11,12,0),var(--bg));
+    opacity:0;transition:opacity .3s var(--ease);
+  }
+  .filters-wrap.is-scrollable::after{opacity:1}
+  .filters-wrap.is-scroll-end::after{opacity:0}
   /* цена стиля уходит под заголовок, чтобы не жать описание */
   .style-row{grid-template-columns:42px 1fr;grid-template-areas:"num name" ". tag" ". desc";row-gap:6px}
   .style-row__tag{text-align:left}
@@ -768,6 +817,17 @@ body.no-scroll{overflow:hidden}
   .lightbox__nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;flex-basis:44px}
   .lightbox__nav--prev{left:10px}
   .lightbox__nav--next{right:10px}
+}
+
+/* Galaxy Fold и прочие 320px: минимумы clamp() ещё великоваты */
+@media (max-width:380px){
+  .header__inner{gap:10px;padding-block:14px}
+  .logo__mark{width:26px;height:26px}
+  .logo__text{font-size:15px;letter-spacing:.08em}
+  .header__cta{padding:9px 10px;font-size:9px;letter-spacing:.06em}
+  .hero__title{font-size:clamp(38px,11.5vw,52px)}
+  .sec-title{font-size:clamp(30px,8.5vw,38px)}
+  .stat__num{font-size:clamp(22px,7vw,26px)}
 }
 
 @media (prefers-reduced-motion:reduce){
